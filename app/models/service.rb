@@ -1,4 +1,4 @@
 class Service
   include Mongoid::Document
-  field :libelle_service, :type => String
+  field :libelle_service
 end

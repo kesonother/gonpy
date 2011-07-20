@@ -47,6 +47,7 @@ GEM
       activemodel (~> 3.0)
       mongo (~> 1.3)
       tzinfo (~> 0.3.22)
+    nifty-generators (0.4.6)
     polyglot (0.3.1)
     rack (1.2.3)
     rack-mount (0.6.14)
@@ -61,6 +62,8 @@ GEM
       activesupport (= 3.0.9)
       bundler (~> 1.0)
       railties (= 3.0.9)
+    rails3-jquery-autocomplete (0.9.0)
+      rails (~> 3.0)
     railties (3.0.9)
       actionpack (= 3.0.9)
       activesupport (= 3.0.9)
@@ -81,5 +84,7 @@ PLATFORMS
 DEPENDENCIES
   bson_ext (~> 1.3)
   mongoid (~> 2.0)
+  nifty-generators
   rails (= 3.0.9)
+  rails3-jquery-autocomplete
   sqlite3

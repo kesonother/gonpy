@@ -1,6 +1,11 @@
 Gonpy::Application.routes.draw do
+  
+  get 'posts/autocomplete_brand_name'
+      
   resources :posts
   resources :services
+    root :to => "posts#index"
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -14,6 +14,7 @@
   <div class="field">
     <%= f.label :service_id %><br />
     <%= f.collection_select :service_id, Service.all, :id, :libelle_service %>
+    <%=f.autocomplete_field :brand_name, posts_autocomplete_brand_name_path %>
   </div>
   
   <div class="field">
