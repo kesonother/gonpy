@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   
-  autocomplete :brand, :name
+  autocomplete :service, :libelle_service
   # GET /posts
   # GET /posts.xml
   def index

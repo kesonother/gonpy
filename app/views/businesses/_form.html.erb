@@ -1,0 +1,66 @@
+<%= form_for(@business) do |f| %>
+  <% if @business.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@business.errors.count, "error") %> prohibited this business from being saved:</h2>
+
+      <ul>
+      <% @business.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :business_name %><br />
+    <%= f.text_field :business_name %>
+  </div>
+  <div class="field">
+    <%= f.label :business_description %><br />
+    <%= f.text_area :business_description %>
+  </div>
+  <div class="field">
+    <%= f.label :mainphone %><br />
+    <%= f.text_field :mainphone %>
+  </div>
+  <div class="field">
+    <%= f.label :website %><br />
+    <%= f.text_field :website %>
+  </div>
+  <%= f.fields_for :addresses do |field_address| %>
+    <p>
+    <%= field_address.label :street %><br />
+    <%= field_address.text_field :street %>
+  </p>
+  <p>
+    <%= field_address.label :zipcode %><br />
+    <%= field_address.text_field :zipcode %>
+  </p>
+  <p>
+    <%= field_address.label :longitude %><br />
+    <%= field_address.text_field :longitude %>
+  </p>
+  <p>
+    <%= field_address.label :latitude %><br />
+    <%= field_address.text_field :latitude %>
+  </p>
+  <% end %>
+  
+  <div class="field">
+    <%= f.label :tags %><br />
+    <%= f.text_field :tags %>
+  </div>
+  <div class="field">
+    <%= f.label :headline %><br />
+    <%= f.text_field :headline %>
+  </div>
+  <div class="field">
+    <%= f.label :siret %><br />
+    <%= f.text_field :siret %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  
+  
+<% end %>

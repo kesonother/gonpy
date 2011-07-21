@@ -3,7 +3,7 @@ class Post
   field :title
   field :details
   field :postal_code
-  field :brand_name
+  field :libelle_service
   validates_presence_of :title,:postal_code,:details
   validates_numericality_of :postal_code, even: true
   

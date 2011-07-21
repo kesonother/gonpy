@@ -1,0 +1,11 @@
+one:
+  street: MyString
+  zipcode: 1
+  longitude: 1.5
+  latitude: 1.5
+
+two:
+  street: MyString
+  zipcode: 1
+  longitude: 1.5
+  latitude: 1.5

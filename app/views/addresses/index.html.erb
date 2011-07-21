@@ -1,0 +1,23 @@
+<% title "Addresses" %>
+
+<table>
+  <tr>
+    <th>Street</th>
+    <th>Zipcode</th>
+    <th>Longitude</th>
+    <th>Latitude</th>
+  </tr>
+  <% for address in @addresses %>
+    <tr>
+      <td><%= address.street %></td>
+      <td><%= address.zipcode %></td>
+      <td><%= address.longitude %></td>
+      <td><%= address.latitude %></td>
+      <td><%= link_to "Show", address %></td>
+      <td><%= link_to "Edit", edit_address_path(address) %></td>
+      <td><%= link_to "Destroy", address, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Address", new_address_path %></p>
