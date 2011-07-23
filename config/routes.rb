@@ -1,10 +1,15 @@
 Gonpy::Application.routes.draw do
   
-  get 'posts/autocomplete_brand_name'
+  get "home/index"
+
+  devise_for :users
+
+  get 'posts/autocomplete_service_libelle_service'
       
   resources :posts
+  resources :businesses,:addresses
   resources :services
-    root :to => "posts#index"
+  root :to => "home#index"
 
 
   # The priority is based upon order of creation:

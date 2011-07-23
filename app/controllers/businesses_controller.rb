@@ -25,7 +25,8 @@ class BusinessesController < ApplicationController
   # GET /businesses/new.xml
   def new
     @business = Business.new
-
+    #@business.addresses.build
+    #@business.build_address
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @business }

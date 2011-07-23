@@ -1,13 +1,19 @@
 class Business
   include Mongoid::Document
-  field :business_name, :type => String
-  field :business_description, :type => String
-  field :mainphone, :type => Integer
-  field :website, :type => String
-  field :tags, :type => String
-  field :headline, :type => String
-  field :siret, :type => String
-  
-  has_one  :address
-  accepts_nested_attributes_for :address
+  field :business_name
+  field :business_description
+  field :mainphone
+  field :website
+  field :tags
+  field :headline
+  field :siret
+  field :street, :type => String
+  field :zipcode, :type => Integer
+  field :longitude, :type => Float
+  field :latitude, :type => Float
+
+#embeds_one :address, :autosave => true
+#validates_associated :address
+#accepts_nested_attributes_for :address
+
 end

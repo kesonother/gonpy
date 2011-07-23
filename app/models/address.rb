@@ -1,9 +1,9 @@
-class Address 
+class Address
   include Mongoid::Document
-  field :street
-  field :zipcode
-  field :longitude 
-  field :latitude
-  #attr_accessible :street, :zipcode, :longitude, :latitude
-  belongs_to :business
+  field :street, :type => String
+  field :zipcode, :type => Integer
+  field :longitude, :type => Float
+  field :latitude, :type => Float
+  
+  #embedded_in :business
 end

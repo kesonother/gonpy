@@ -34,24 +34,7 @@
   <b>Siret:</b>
   <%= @business.siret %>
 </p>
-<% for address in @business.addresses %>
-<p>
-  <strong>Street:</strong>
-  <%= address.street %>
-</p>
-<p>
-  <strong>Zipcode:</strong>
-  <%= address.zipcode %>
-</p>
-<p>
-  <strong>Longitude:</strong>
-  <%= address.longitude %>
-</p>
-<p>
-  <strong>Latitude:</strong>
-  <%= address.latitude %>
-</p>
-<% end %>
+
 
 <%= link_to 'Edit', edit_business_path(@business) %> |
 <%= link_to 'Back', businesses_path %>

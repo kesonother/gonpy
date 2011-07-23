@@ -28,6 +28,26 @@
     <%= f.label :Détails %><br />
     <%= f.text_area :details %>
   </div>
+  <% if user_signed_in? %>
+
+  <% else %>
+	<%= fields_for @user do |buider| %>
+	  <p>
+		<%= buider.label :email %><br />
+	  	<%= buider.email_field :email %>
+	  </p>
+	
+	  <p>
+	  	<%= buider.label :password %><br />
+	  	<%= buider.password_field :password %>
+	  </p>
+	
+	  <p>
+	  	<%= buider.label :password_confirmation %><br />
+	  	<%= buider.password_field :password_confirmation %>
+	  </p>
+	<% end %>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>

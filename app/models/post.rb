@@ -8,4 +8,5 @@ class Post
   validates_numericality_of :postal_code, even: true
   
   referenced_in :service
+  belongs_to :user
 end

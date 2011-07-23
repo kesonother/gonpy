@@ -27,7 +27,9 @@ class PostsController < ApplicationController
   # GET /posts/new.xml
   def new
     @post = Post.new
-
+    if not user_signed_in?
+      @user = User.new
+    end
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @post }
@@ -42,15 +44,21 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.xml
   def create
+    @user = User.new(params[:user])
     @post = Post.new(params[:post])
 
     respond_to do |format|
-      if @post.save
-        format.html { redirect_to(@post, :notice => 'Post was successfully created.') }
-        format.xml  { render :xml => @post, :status => :created, :location => @post }
+      if sign_in(:user, User.find(params[:user]))
+        if @post.save
+          format.html { redirect_to(@post, :notice => 'Post was successfully created.') }
+          format.xml  { render :xml => @post, :status => :created, :location => @post }
+        else
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
+        end
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
     end
   end
