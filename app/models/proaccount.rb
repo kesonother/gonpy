@@ -1,5 +1,6 @@
-class Business
+class Proaccount
   include Mongoid::Document
+  
   field :business_name
   field :business_description
   field :mainphone
@@ -11,9 +12,4 @@ class Business
   field :zipcode, :type => Integer
   field :longitude, :type => Float
   field :latitude, :type => Float
-
-#embeds_one :address, :autosave => true
-#validates_associated :address
-#accepts_nested_attributes_for :address
-
 end
