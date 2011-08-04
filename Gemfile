@@ -11,6 +11,8 @@ gem "bson_ext", "~> 1.3"
 
 gem 'rails3-jquery-autocomplete'
 gem 'nifty-generators'
+
+gem 'devise'
 # Use unicorn as the web server
 # gem 'unicorn'
 
@@ -33,3 +35,4 @@ gem 'nifty-generators'
 # group :development, :test do
 #   gem 'webrat'
 # end
+gem "mocha", :group => :test

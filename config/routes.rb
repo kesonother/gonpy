@@ -2,11 +2,13 @@ Gonpy::Application.routes.draw do
   
   get "home/index"
 
-  devise_for :users
+  devise_for :users  
+  devise_for :professionals
 
   get 'posts/autocomplete_service_libelle_service'
       
   resources :posts
+  resources :proaccounts
   resources :businesses,:addresses
   resources :services
   root :to => "home#index"

@@ -11,11 +11,20 @@
   <body>
     <div id="container">
       <div id="user_nav">
+      	
         <% if user_signed_in? %>
-          Signed in as <%= current_user.email %>. Not you?
-          <%= link_to "Sign out", destroy_user_session_path , :method => :delete%>
+          Bonjour <%= current_user.first_name %>,
+          <%= link_to "Déconnection", destroy_user_session_path , :method => :delete%>
+        <% elsif professional_signed_in? %>
+          Bonjour <%= current_professional.first_name %>,
+          <%= link_to "Déconnection", destroy_professional_session_path , :method => :delete%>
         <% else %>
-          <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+          <%= link_to "Client", new_user_registration_path %> <%= link_to "Professionnel", new_professional_registration_path %>
+          Compte
+          <ul>
+	          <li><%= link_to "Pro", new_professional_session_path %></li>
+	          <li><%= link_to "Client", new_user_session_path %></li> 
+          </ul>
         <% end %>
       </div>
       <div id="menu">

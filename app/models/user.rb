@@ -5,6 +5,13 @@ class User
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   
-  has_many :posts
+  field :first_name
+  field :last_name
+  
+  validates_uniqueness_of :email 
+  #validates_presence_of :email
+  # Setup accessible (or protected) attributes for your model  
+  attr_accessible :email, :password, :password_confirmation  
+  #has_many :posts
   
 end

@@ -45,6 +45,7 @@ class PostsController < ApplicationController
   # POST /posts.xml
   def create
     @user = User.new(params[:user])
+    @user.save
     @post = Post.new(params[:post])
 
     respond_to do |format|
@@ -56,9 +57,9 @@ class PostsController < ApplicationController
           format.html { render :action => "new" }
           format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
         end
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+      #else
+       # format.html { render :action => "new" }
+        #format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
     end
   end
