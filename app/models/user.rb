@@ -12,6 +12,7 @@ class User
   #validates_presence_of :email
   # Setup accessible (or protected) attributes for your model  
   attr_accessible :email, :password, :password_confirmation  
-  #has_many :posts
+  
+  embeds_one :proaccount
   
 end

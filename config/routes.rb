@@ -1,16 +1,30 @@
 Gonpy::Application.routes.draw do
   
+  get "proaccounts/new"
+
+  get "proaccounts/create"
+
+  get "proaccounts/edit"
+
+  get "proaccounts/edit_services"
+
+  get "proaccounts/edit_photo"
+
+  get "proaccounts/settings"
+
   get "home/index"
 
-  devise_for :users  
+
+  devise_for :users #, :controllers => {:registrations => "registrations"}
+  #devise_scope :user do
+  #    root :to => "registrations#new"
+  #end 
   devise_for :professionals
 
   get 'posts/autocomplete_service_libelle_service'
       
-  resources :posts
-  resources :proaccounts
-  resources :businesses,:addresses
-  resources :services
+  resources :posts,:proaccounts,:address
+  resources :prestations
   root :to => "home#index"
 
 

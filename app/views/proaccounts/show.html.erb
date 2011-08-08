@@ -1,5 +1,56 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <b>Business name:</b>
+  <%= @proaccount.business_name %>
+</p>
 
-<%= link_to 'Edit', edit_proaccount_path(@proaccount) %> |
+<p>
+  <b>Business description:</b>
+  <%= @proaccount.business_description %>
+</p>
+
+<p>
+  <b>Mainphone:</b>
+  <%= @proaccount.mainphone %>
+</p>
+
+<p>
+  <b>Website:</b>
+  <%= @proaccount.website %>
+</p>
+
+<p>
+  <b>Tags:</b>
+  <%= @proaccount.tags %>
+</p>
+
+<p>
+  <b>Headline:</b>
+  <%= @proaccount.headline %>
+</p>
+
+<p>
+  <b>Siret:</b>
+  <%= @proaccount.siret %>
+</p>
+
+<p>
+  <b>Rue:</b>
+  <%= @address.street %>
+</p>
+
+<p>
+  <b>code postal:</b>
+  <%= @address.zipcode %>
+</p>
+
+<p>
+  <b>ville:</b>
+  <%= @address.city %>
+</p>
+
+
+<%= link_to 'Edit',  proaccounts_edit_path(@proaccounts) %> |
 <%= link_to 'Back', proaccounts_path %>
+

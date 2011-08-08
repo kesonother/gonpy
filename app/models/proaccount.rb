@@ -8,8 +8,15 @@ class Proaccount
   field :tags
   field :headline
   field :siret
-  field :street, :type => String
-  field :zipcode, :type => Integer
-  field :longitude, :type => Float
-  field :latitude, :type => Float
+#  field :street, :type => String
+#  field :city, :type => String
+#  field :zipcode, :type => Integer
+#  field :longitude, :type => Float
+#  field :latitude, :type => Float
+  
+  validates_presence_of :business_name,:business_description
+  #attr_accessible :first_name,:last_name,:email, :password, :password_confirmation
+  embedded_in :professional
+  embeds_one :address
+  embeds_many :services
 end

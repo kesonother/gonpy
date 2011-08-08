@@ -40,24 +40,28 @@
     <%= f.text_field :siret %>
   </div>
   
-
+<%= f.fields_for(@address) do |address| %>
   <p>
-    <%= f.label :street %><br />
-    <%= f.text_field :street%>
+    <%= address.label :street %><br />
+    <%= address.text_field :street%>
   </p>
   <p>
-    <%= f.label :zipcode %><br />
-    <%= f.text_field :zipcode %>
+    <%= address.label :zipcode %><br />
+    <%= address.text_field :zipcode %>
+  </p>
+    <p>
+    <%= address.label :city %><br />
+    <%= address.text_field :city %>
   </p>
   <p>
-    <%= f.label :longitude %><br />
-    <%= f.text_field :longitude %>
+    <%= address.label :longitude %><br />
+    <%= address.text_field :longitude %>
   </p>
   <p>
-    <%= f.label :latitude %><br />
-    <%= f.text_field :latitude %>
+    <%= address.label :latitude %><br />
+    <%= address.text_field :latitude %>
   </p>
-
+<% end %>
   
   <div class="actions">
     <%= f.submit %>

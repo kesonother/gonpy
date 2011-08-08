@@ -11,7 +11,20 @@
   <body>
     <div id="container">
       <div id="user_nav">
-      	
+
+        <% if professional_signed_in? %>
+          Bonjour <%= current_professional.first_name %>,
+          <%= link_to "Déconnection", destroy_professional_session_path , :method => :delete%>
+          
+     	<div id="menu">
+      		<%= link_to 'Profil', proaccounts_edit_path(@proaccount) %>
+      		<%= link_to 'Services', proaccounts_edit_services_path(@proaccount) %>
+      	</div>
+        <% else %>
+			<%= link_to "Inscription", new_professional_registration_path %>
+			<%= link_to "Connexion", new_professional_session_path %>
+        <% end %>
+<!--      	
         <% if user_signed_in? %>
           Bonjour <%= current_user.first_name %>,
           <%= link_to "Déconnection", destroy_user_session_path , :method => :delete%>
@@ -26,13 +39,9 @@
 	          <li><%= link_to "Client", new_user_session_path %></li> 
           </ul>
         <% end %>
+-->
       </div>
-      <div id="menu">
-      	<ul>
-      		<li><%= link_to 'Demander un service', new_post_path %></li>
-      		<li></li>
-      	</ul>
-      </div>
+
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
       <% end %>

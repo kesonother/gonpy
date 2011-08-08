@@ -1,49 +1,34 @@
 require 'test_helper'
 
 class ProaccountsControllerTest < ActionController::TestCase
-  setup do
-    @proaccount = proaccounts(:one)
-  end
-
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:proaccounts)
-  end
-
   test "should get new" do
     get :new
     assert_response :success
   end
 
-  test "should create proaccount" do
-    assert_difference('Proaccount.count') do
-      post :create, :proaccount => @proaccount.attributes
-    end
-
-    assert_redirected_to proaccount_path(assigns(:proaccount))
-  end
-
-  test "should show proaccount" do
-    get :show, :id => @proaccount.to_param
+  test "should get create" do
+    get :create
     assert_response :success
   end
 
-  test "should get edit" do
-    get :edit, :id => @proaccount.to_param
+  test "should get edit_name" do
+    get :edit_name
     assert_response :success
   end
 
-  test "should update proaccount" do
-    put :update, :id => @proaccount.to_param, :proaccount => @proaccount.attributes
-    assert_redirected_to proaccount_path(assigns(:proaccount))
+  test "should get edit_services" do
+    get :edit_services
+    assert_response :success
   end
 
-  test "should destroy proaccount" do
-    assert_difference('Proaccount.count', -1) do
-      delete :destroy, :id => @proaccount.to_param
-    end
-
-    assert_redirected_to proaccounts_path
+  test "should get edit_photo" do
+    get :edit_photo
+    assert_response :success
   end
+
+  test "should get settings" do
+    get :settings
+    assert_response :success
+  end
+
 end
