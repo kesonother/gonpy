@@ -1,17 +1,13 @@
 Gonpy::Application.routes.draw do
   
+  resources :services
+
   get "proaccounts/new"
-
   get "proaccounts/create"
-
   get "proaccounts/edit"
-
-  get "proaccounts/edit_services"
-
-  get "proaccounts/edit_photo"
-
+  get "proaccounts/update"
+  get "proaccounts/edit_service"
   get "proaccounts/settings"
-
   get "home/index"
 
 
@@ -23,8 +19,7 @@ Gonpy::Application.routes.draw do
 
   get 'posts/autocomplete_service_libelle_service'
       
-  resources :posts,:proaccounts,:address
-  resources :prestations
+  resources :proaccounts,:address
   root :to => "home#index"
 
 

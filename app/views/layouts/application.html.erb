@@ -3,7 +3,7 @@
   <head>
     <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
     <%= stylesheet_link_tag "application" %>
-  	<%= javascript_include_tag 'jquery-1.5.1.min.js', 'jquery-ui-1.8.14.custom.min.js', 'autocomplete-rails.js', 'rails.js'  %>
+  	<%= javascript_include_tag 'jquery-1.5.1.min.js', 'jquery-ui-1.8.14.custom.min.js', 'autocomplete-rails.js', 'rails.js','application.js'  %>
   	<%= stylesheet_link_tag 'jquery-ui-1.8.14.custom.css' %>
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
@@ -17,8 +17,8 @@
           <%= link_to "Déconnection", destroy_professional_session_path , :method => :delete%>
           
      	<div id="menu">
-      		<%= link_to 'Profil', proaccounts_edit_path(@proaccount) %>
-      		<%= link_to 'Services', proaccounts_edit_services_path(@proaccount) %>
+      		<%= link_to 'Profil', proaccounts_edit_path(@proaccounts) %>
+      		<%= link_to 'Services',  proaccounts_edit_service_path(@proaccounts) %>
       	</div>
         <% else %>
 			<%= link_to "Inscription", new_professional_registration_path %>

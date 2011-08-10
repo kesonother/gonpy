@@ -1,8 +1,10 @@
 class ServicesController < ApplicationController
+  respond_to :html, :js
+  
   # GET /services
   # GET /services.xml
   def index
-    @services = Service.all
+    @services = current_professional.proaccount.services
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +15,7 @@ class ServicesController < ApplicationController
   # GET /services/1
   # GET /services/1.xml
   def show
-    @service = Service.find(params[:id])
+    @service = current_professional.proaccount.services.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -28,7 +30,8 @@ class ServicesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @service }
+      #format.xml  { render :xml => @service }
+      
     end
   end
 
@@ -40,15 +43,19 @@ class ServicesController < ApplicationController
   # POST /services
   # POST /services.xml
   def create
-    @service = Service.new(params[:service])
 
+    @service = current_professional.proaccount.services.new(params[:service])
+    
     respond_to do |format|
       if @service.save
-        format.html { redirect_to(@service, :notice => 'Service was successfully created.') }
-        format.xml  { render :xml => @service, :status => :created, :location => @service }
+        @services = current_professional.proaccount.services
+        format.html { redirect_to(proaccounts_edit_service_path, :notice => 'Service was successfully created.') }
+        #format.xml  { render :xml => @service, :status => :created, :location => @service }
+        format.js   #{ render :nothing => true }  
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @service.errors, :status => :unprocessable_entity }
+        #format.xml  { render :xml => @service.errors, :status => :unprocessable_entity }
+        format.js   #{ render :nothing => true }  
       end
     end
   end
@@ -56,15 +63,17 @@ class ServicesController < ApplicationController
   # PUT /services/1
   # PUT /services/1.xml
   def update
-    @service = Service.find(params[:id])
+    @service = current_professional.proaccount.services.find(params[:id])
 
     respond_to do |format|
       if @service.update_attributes(params[:service])
         format.html { redirect_to(@service, :notice => 'Service was successfully updated.') }
-        format.xml  { head :ok }
+        #format.xml  { head :ok }
+        format.js   { render :nothing => true }  
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @service.errors, :status => :unprocessable_entity }
+        #format.xml  { render :xml => @service.errors, :status => :unprocessable_entity }
+        format.js   { render :nothing => true }  
       end
     end
   end

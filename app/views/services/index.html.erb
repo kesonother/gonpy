@@ -2,7 +2,6 @@
 
 <table>
   <tr>
-    <th>Libelle service</th>
     <th></th>
     <th></th>
     <th></th>
@@ -10,7 +9,6 @@
 
 <% @services.each do |service| %>
   <tr>
-    <td><%= service.libelle_service %></td>
     <td><%= link_to 'Show', service %></td>
     <td><%= link_to 'Edit', edit_service_path(service) %></td>
     <td><%= link_to 'Destroy', service, :confirm => 'Are you sure?', :method => :delete %></td>

@@ -1,4 +1,4 @@
-<%= form_for(@proaccount) do |f| %>
+<%= form_for(@proaccount,:remote => true) do |f| %>
   <% if @proaccount.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@proaccount.errors.count, "error") %> prohibited this proaccounts from being saved:</h2>

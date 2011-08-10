@@ -16,7 +16,7 @@ class Proaccount
   
   validates_presence_of :business_name,:business_description
   #attr_accessible :first_name,:last_name,:email, :password, :password_confirmation
-  embedded_in :professional
+  belongs_to :professional
   embeds_one :address
   embeds_many :services
 end
