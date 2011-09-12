@@ -37,7 +37,10 @@ class ServicesController < ApplicationController
 
   # GET /services/1/edit
   def edit
-    @service = Service.find(params[:id])
+    @service = current_professional.proaccount.services.find(params[:id])
+    if current_professional.proaccount.services.exists?
+      @services = current_professional.proaccount.services
+    end
   end
 
   # POST /services
@@ -55,7 +58,7 @@ class ServicesController < ApplicationController
       else
         format.html { render :action => "new" }
         #format.xml  { render :xml => @service.errors, :status => :unprocessable_entity }
-        format.js   #{ render :nothing => true }  
+        format.js   { render :template => 'proaccounts/edit_service' }  
       end
     end
   end
@@ -67,11 +70,12 @@ class ServicesController < ApplicationController
 
     respond_to do |format|
       if @service.update_attributes(params[:service])
-        format.html { redirect_to(@service, :notice => 'Service was successfully updated.') }
+        #format.html { redirect_to(@service, :notice => 'Service was successfully updated.') }
+        format.html { redirect_to(proaccounts_edit_service_path, :notice => 'Service mis &agrave; jour avec succ&egrave;s.')}
         #format.xml  { head :ok }
         format.js   { render :nothing => true }  
       else
-        format.html { render :action => "edit" }
+        format.html { redirect_to(proaccounts_edit_service_path)}
         #format.xml  { render :xml => @service.errors, :status => :unprocessable_entity }
         format.js   { render :nothing => true }  
       end
@@ -81,11 +85,11 @@ class ServicesController < ApplicationController
   # DELETE /services/1
   # DELETE /services/1.xml
   def destroy
-    @service = Service.find(params[:id])
+    @service = current_professional.proaccount.services.find(params[:id])
     @service.destroy
 
     respond_to do |format|
-      format.html { redirect_to(services_url) }
+      format.html { redirect_to(proaccounts_edit_service_path, :notice => 'Service mis &agrave; jour avec succ&egrave;s.')}
       format.xml  { head :ok }
     end
   end

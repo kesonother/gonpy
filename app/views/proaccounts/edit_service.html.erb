@@ -16,13 +16,13 @@
     <th></th>
     <th></th>
   </tr>
+  <h1>Ajout d'un service</h1>
 <div id="list-services">
+
 <% @services.each do |service| %>
   <tr>
-  	<td><%= link_to service.service_name, service %></td>
+  	<td><%= link_to service.service_name, edit_service_path(service)%></td>
 
-    <td><%= link_to 'Edit', edit_service_path(service) %></td>
-    <td><%= link_to 'Destroy', service, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </div>

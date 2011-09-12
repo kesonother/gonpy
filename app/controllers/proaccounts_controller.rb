@@ -70,26 +70,28 @@ class ProaccountsController < ApplicationController
       if @proaccount.update_attributes(params[:proaccount])
         format.html { redirect_to(@proaccount, :notice => 'Service was successfully updated.') }
         #format.xml  { head :ok }
-        format.js   { render :nothing => true }  
+        format.js   #{ render :nothing => true }  
       else
         format.html { render :action => "edit" }
         #format.xml  { render :xml => @proaccount.errors, :status => :unprocessable_entity }
-        format.js   { render :nothing => true }  
+        format.js   #{ render :nothing => true }  
       end
     end
   end
   
   def edit_service
-    @service = Service.new
-    
-    if current_professional.proaccount.services.exists?
-      @services = current_professional.proaccount.services
-    end
-    
-    respond_to do |format|
-      format.html # edit_service.html.erb
-      format.xml  { render :xml => @services }
-    end
+      
+        @service = Service.new
+        
+        if current_professional.proaccount.services.exists?
+          @services = current_professional.proaccount.services
+        end
+        
+        respond_to do |format|
+          format.html # edit_service.html.erb
+          format.xml  { render :xml => @services }
+        end
+
   end
   
   def edit_photo
