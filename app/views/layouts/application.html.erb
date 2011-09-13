@@ -19,6 +19,7 @@
      	<div id="menu">
       		<%= link_to 'Profil', proaccounts_edit_path(@proaccounts) %>
       		<%= link_to 'Services',  proaccounts_edit_service_path(@proaccounts) %>
+      		<%= link_to 'Parametres',  proaccounts_settings_path(@proaccounts) %>
       	</div>
         <% else %>
 			<%= link_to "Inscription", new_professional_registration_path %>

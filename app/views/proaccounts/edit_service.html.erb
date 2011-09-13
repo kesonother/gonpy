@@ -39,13 +39,19 @@
 	  </div>
 	  <div class="field">
 	    <%= f.label :duration %><br />
-	    <%= f.text_field :duration %>
-	  </div>
+	     <%= f.select :duration, ["15 minutes","30 minutes","45 minutes","1 heures","1 heures 15","1 heures 30",
+	     	"1 heure 45","2 heures","2 heures 15","2 heures 30","2 heures 45","3 heures","3 heures 15",
+	     	"3 heures 30","3 heures 45","4 heures","5 heures","6 heures","7 heures","8 heures"] %>
+	  </div
 	  <div class="field">
 	    <%= f.label :description %><br />
 	    <%= f.text_area :description %>
 	  </div>
   
+  	  <div>
+	  	<%= f.check_box :display %> <%= f.label :display %>
+	  </div>
+	  
     	<%= f.submit %>
   </div>
 <% end %>

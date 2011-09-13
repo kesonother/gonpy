@@ -41,25 +41,10 @@
   </div>
   
 <%= f.fields_for(@address) do |address| %>
-  <p>
-    <%= address.label :street %><br />
-    <%= address.text_field :street%>
-  </p>
-  <p>
-    <%= address.label :zipcode %><br />
-    <%= address.text_field :zipcode %>
-  </p>
+
     <p>
-    <%= address.label :city %><br />
-    <%= address.text_field :city %>
-  </p>
-  <p>
-    <%= address.label :longitude %><br />
-    <%= address.text_field :longitude %>
-  </p>
-  <p>
-    <%= address.label :latitude %><br />
-    <%= address.text_field :latitude %>
+    <%= address.label :Adresse %><br />
+    <%= address.text_field :address %>
   </p>
 <% end %>
   

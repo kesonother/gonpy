@@ -13,6 +13,8 @@ gem 'rails3-jquery-autocomplete'
 gem 'nifty-generators'
 
 gem 'devise'
+gem 'geocoder'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
