@@ -42,9 +42,17 @@
   
 <%= f.fields_for(@address) do |address| %>
 
+   <p>
+    <%= address.label :street %><br />
+    <%= address.text_field :street%>
+  </p>
+  <p>
+    <%= address.label :zipcode %><br />
+    <%= address.text_field :zipcode %>
+  </p>
     <p>
-    <%= address.label :Adresse %><br />
-    <%= address.text_field :address %>
+    <%= address.label :city %><br />
+    <%= address.text_field :city %>
   </p>
 <% end %>
   
