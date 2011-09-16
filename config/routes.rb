@@ -7,6 +7,7 @@ Gonpy::Application.routes.draw do
   get "proaccounts/edit"
   get "proaccounts/update"
   get "proaccounts/edit_service"
+  get "proaccounts/edit_photo"
   get "proaccounts/settings"
   get "home/index"
 

@@ -11,10 +11,16 @@ gem "bson_ext", "~> 1.3"
 
 gem 'rails3-jquery-autocomplete'
 gem 'nifty-generators'
-
+#pour la gestion de l'authentification
 gem 'devise'
+#pour la gestion de la géolocalisation
 gem 'geocoder'
 
+#Pour la gestion des images
+gem 'carrierwave'        , :git => 'https://github.com/jnicklas/carrierwave.git'
+gem 'rack-gridfs'         , :git => 'https://github.com/skinandbones/rack-gridfs.git', :require => 'rack/gridfs'
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+gem 'mini_magick'
 # Use unicorn as the web server
 # gem 'unicorn'
 

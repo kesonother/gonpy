@@ -95,6 +95,7 @@ class ProaccountsController < ApplicationController
   end
   
   def edit_photo
+    
   end
 
   def settings

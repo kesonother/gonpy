@@ -1,4 +1,4 @@
-<%= form_for(@proaccount,:remote => true) do |f| %>
+<%= form_for(@proaccount,:remote => true, :html => { :multipart => true }) do |f| %>
   <% if @proaccount.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@proaccount.errors.count, "error") %> prohibited this proaccounts from being saved:</h2>
@@ -39,7 +39,12 @@
     <%= f.label :siret %><br />
     <%= f.text_field :siret %>
   </div>
+  <div>
   
+	<%= f.label :image %><br />
+	<%= f.file_field :image %>
+
+  </div>
 <%= f.fields_for(@address) do |address| %>
 
    <p>
