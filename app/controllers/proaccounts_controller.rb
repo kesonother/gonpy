@@ -68,13 +68,11 @@ class ProaccountsController < ApplicationController
 
     respond_to do |format|
       if @proaccount.update_attributes(params[:proaccount])
+        
         format.html { redirect_to(@proaccount, :notice => 'Service was successfully updated.') }
         #format.xml  { head :ok }
         format.js   #{ render :nothing => true }  
-      else
-        format.html { render :action => "edit" }
-        #format.xml  { render :xml => @proaccount.errors, :status => :unprocessable_entity }
-        format.js   #{ render :nothing => true }  
+  
       end
     end
   end
@@ -95,7 +93,16 @@ class ProaccountsController < ApplicationController
   end
   
   def edit_photo
+     @picture = Picture.new
+     
+    if current_professional.proaccount.pictures.exists?
+      @pictures = current_professional.proaccount.pictures
+    end
     
+    respond_to do |format|
+      format.html # edit_photo.html.erb
+      format.xml  { render :xml => @pictures }
+    end
   end
 
   def settings

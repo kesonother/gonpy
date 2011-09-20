@@ -1,2 +1,10 @@
 <h1>Editer photos</h1>
+
+<div id="list-photos">
+
+<% @pictures.each do |picture| %>
+	<%= image_tag picture.image.url(:thumb) %>
+<% end %>
+</div>
+
 <%= render 'form_photo' %>

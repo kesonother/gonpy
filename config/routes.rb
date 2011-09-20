@@ -1,7 +1,7 @@
 Gonpy::Application.routes.draw do
   
   resources :services
-
+  resources :pictures
   get "proaccounts/new"
   get "proaccounts/create"
   get "proaccounts/edit"

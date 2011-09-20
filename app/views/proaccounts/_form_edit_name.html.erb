@@ -40,13 +40,10 @@
     <%= f.text_field :siret %>
   </div>
   <div>
-  
 	<%= f.label :image %><br />
 	<%= f.file_field :image %>
-
   </div>
 <%= f.fields_for(@address) do |address| %>
-
    <p>
     <%= address.label :street %><br />
     <%= address.text_field :street%>
