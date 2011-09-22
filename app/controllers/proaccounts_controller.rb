@@ -97,6 +97,7 @@ class ProaccountsController < ApplicationController
      
     if current_professional.proaccount.pictures.exists?
       @pictures = current_professional.proaccount.pictures
+      
     end
     
     respond_to do |format|

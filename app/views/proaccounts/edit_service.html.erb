@@ -18,13 +18,14 @@
   </tr>
   <h1>Ajout d'un service</h1>
 <div id="list-services">
-
+<%if current_professional.proaccount.services.exists? %>
 <% @services.each do |service| %>
   <tr>
   	<td><%= link_to service.service_name, edit_service_path(service)%></td>
 
   </tr>
 <% end %>
+<%end%>
 </div>
 </table>
   <div class="actions">

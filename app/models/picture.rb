@@ -3,6 +3,6 @@ class Picture
   
   mount_uploader :image, ImageUploader
   
-  belongs_to :proaccount
+  embedded_in :proaccount
   
 end
