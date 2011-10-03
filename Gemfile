@@ -17,10 +17,8 @@ gem 'devise'
 gem 'geocoder'
 
 #Pour la gestion des images
-gem 'carrierwave'        , :git => 'https://github.com/jnicklas/carrierwave.git'
-gem 'rack-gridfs'         , :git => 'https://github.com/skinandbones/rack-gridfs.git', :require => 'rack/gridfs'
-gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
-gem 'mini_magick'
+gem "mongoid-paperclip", :require => "mongoid_paperclip"
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

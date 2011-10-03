@@ -10,7 +10,7 @@ Gonpy::Application.routes.draw do
   get "proaccounts/edit_photo"
   get "proaccounts/settings"
   get "home/index"
-  match "/uploads/uploads/*path" => "gridfs#serve"
+  #match "/uploads/uploads/*path" => "gridfs#serve"
 
   devise_for :users #, :controllers => {:registrations => "registrations"}
   #devise_scope :user do
