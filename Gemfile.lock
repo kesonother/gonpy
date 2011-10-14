@@ -107,6 +107,7 @@ DEPENDENCIES
   mongoid (~> 2.0)
   mongoid-paperclip
   nifty-generators
+  paperclip
   rails (= 3.0.9)
   rails3-jquery-autocomplete
   sqlite3

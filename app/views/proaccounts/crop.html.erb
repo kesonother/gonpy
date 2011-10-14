@@ -1,0 +1,44 @@
+<% title "Crop avatar" %>
+<% content_for(:head) do %>
+<%= stylesheet_link_tag "jquery.Jcrop" %>
+<%= javascript_include_tag "jquery.Jcrop.min" %>
+<script type="text/javascript" charset="utf-8">
+$(function() {
+  $('#cropbox').Jcrop({
+    onChange: update_crop,
+    onSelect: update_crop,
+    setSelect: [0, 0, 500, 500],
+    aspectRatio: 1
+  });
+});
+
+function update_crop(coords) {
+  var ratio = <%= @pictures.image_geometry(:original).width %> / <%= @pictures.image_geometry(:medium).width %>;   
+  $('#crop_x').val(Math.floor(coords.x * ratio));  
+  $('#crop_y').val(Math.floor(coords.y * ratio));  
+  $('#crop_w').val(Math.floor(coords.w * ratio));  
+  $('#crop_h').val(Math.floor(coords.h * ratio)); 
+ 
+}
+</script>
+<% end %>
+
+<h1>Editer photos</h1>
+
+<div id="list-photos">
+	<%if current_professional.proaccount.pictures.exists?%>
+
+			<%= image_tag @pictures.image.url(:medium), :id => "cropbox" %>
+			
+
+			<% form_for @pictures do |f| %>
+			  <% for attribute in [:crop_x, :crop_y, :crop_w, :crop_h] %>  
+			    <%= f.text_field attribute, :id => attribute %>  
+			  <% end %>  
+			  <p><%= f.submit "Crop" %></p>
+			<% end %>
+
+	<%end%>
+</div>
+
+

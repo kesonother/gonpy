@@ -92,12 +92,24 @@ class ProaccountsController < ApplicationController
 
   end
   
+  def photo
+    @picture = Picture.new
+    
+    if current_professional.proaccount.pictures.exists?
+      @pictures = current_professional.proaccount.pictures.first()    
+    end
+    
+    respond_to do |format|
+      format.html # photo.html.erb
+      format.xml  { render :xml => @pictures }
+    end
+  end
+  
   def edit_photo
      @picture = Picture.new
      
     if current_professional.proaccount.pictures.exists?
-      @pictures = current_professional.proaccount.pictures
-      
+      @pictures = current_professional.proaccount.pictures.first()    
     end
     
     respond_to do |format|
@@ -105,7 +117,20 @@ class ProaccountsController < ApplicationController
       format.xml  { render :xml => @pictures }
     end
   end
+  
+  def crop
 
+    if current_professional.proaccount.pictures.exists?
+      @pictures = current_professional.proaccount.pictures.first()
+      
+    end
+    
+    respond_to do |format|
+      format.html # crop.html.erb
+      format.xml  { render :xml => @pictures }
+    end
+  end
+  
   def settings
   end
 

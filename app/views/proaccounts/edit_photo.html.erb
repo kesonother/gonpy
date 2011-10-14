@@ -1,35 +1,20 @@
-<% title "Crop avatar" %>
-<% content_for(:head) do %>
-<%= stylesheet_link_tag "jquery.Jcrop" %>
-<%= javascript_include_tag "jquery.Jcrop.min" %>
-<script type="text/javascript" charset="utf-8">
-$(function() {
-  $('#cropbox').Jcrop({
-    onChange: update_crop,
-    onSelect: update_crop,
-    setSelect: [0, 0, 500, 500],
-    aspectRatio: 1
-  });
-});
+<% title "Ajouter une image" %>
 
-function update_crop(coords) {
-  $('#crop_x').val(coords.x);  
-  $('#crop_y').val(coords.y);  
-  $('#crop_w').val(coords.w);  
-  $('#crop_h').val(coords.h);
- 
-}
-</script>
-<% end %>
 
 <h1>Editer photos</h1>
 
 <div id="list-photos">
 <%if current_professional.proaccount.pictures.exists?%>
-<% @pictures.each do |picture| %>
-	<%= image_tag picture.image.url(:medium), :id => "cropbox" %>
-<% end %>
+
+	<% form_for @pictures do |f| %>
+		<%= image_tag @pictures.image.url(:medium)%>
+		  <%= f.label :image %>
+  		<%= f.file_field :image %>
+	  <p><%= f.submit "Modifier" %></p>
+	<% end %>
+<%else%>
+<%= render 'form_photo' %>
 <%end%>
 </div>
 
-<%= render 'form_photo' %>
+

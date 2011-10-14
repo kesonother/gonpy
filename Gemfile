@@ -17,6 +17,7 @@ gem 'devise'
 gem 'geocoder'
 
 #Pour la gestion des images
+gem "paperclip"
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
 
 # Use unicorn as the web server
