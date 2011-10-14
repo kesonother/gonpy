@@ -5,9 +5,8 @@
 
 <div id="list-photos">
 <%if current_professional.proaccount.pictures.exists?%>
-
-	<% form_for @pictures do |f| %>
-		<%= image_tag @pictures.image.url(:medium)%>
+	<%= image_tag @pictures.image.url(:medium)%>
+	<%= form_for(@pictures, :html => { :multipart => true }) do |f| %>
 		  <%= f.label :image %>
   		<%= f.file_field :image %>
 	  <p><%= f.submit "Modifier" %></p>
