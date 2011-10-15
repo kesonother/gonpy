@@ -1,0 +1,58 @@
+<h1>Search#index</h1>
+
+<% @proaccounts.each do |proaccount| @address = proaccount.address %>
+
+<ul>
+
+<li>
+  <b>Business name:</b>
+  <%= proaccount.business_name %>
+</li>
+
+<li>
+  <b>Business description:</b>
+  <%= proaccount.business_description %>
+</li>
+
+<li>
+  <b>Mainphone:</b>
+  <%= proaccount.mainphone %>
+</li>
+
+<li>
+  <b>Website:</b>
+  <%= proaccount.website %>
+</li>
+
+<li>
+  <b>Tags:</b>
+  <%= proaccount.tags %>
+</li>
+
+<li>
+  <b>Headline:</b>
+  <%= proaccount.headline %>
+</li>
+
+<li>
+  <b>Siret:</b>
+  <%= proaccount.siret %>
+</li>
+
+  <li>
+  <b>Rue:</b>
+  <%= @address.street %>
+  </li>
+
+<li>
+  <b>code postal:</b>
+  <%= @address.zipcode %>
+</li>
+
+<li>
+  <b>ville:</b>
+  <%= @address.city %>
+</li>
+</ul>
+<%= link_to 'voir', proaccount_path(proaccount) %>
+<% end %>

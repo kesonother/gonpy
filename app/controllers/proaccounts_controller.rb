@@ -13,9 +13,10 @@ class ProaccountsController < ApplicationController
   
    def show
 
-    @proaccount = current_professional.proaccount
+    #@proaccount = current_professional.proaccount
+    #@address = @proaccount.address
+    @proaccount = Proaccount.find(params[:id])
     @address = @proaccount.address
-    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @proaccount }

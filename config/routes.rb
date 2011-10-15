@@ -1,5 +1,13 @@
 Gonpy::Application.routes.draw do
   
+  get "search/index"
+
+  resources :messages
+
+  resources :categories
+
+  resources :requests
+
   resources :services
   resources :pictures
   get "proaccounts/new"
@@ -12,6 +20,10 @@ Gonpy::Application.routes.draw do
   #get "proaccounts/crop"
   get "proaccounts/settings"
   get "home/index"
+  get "requests/new"
+  get "requests/direct"
+  #get "requests/autocomplete_category_libelle_category"
+  
   #match "/uploads/uploads/*path" => "gridfs#serve"
 
   devise_for :users #, :controllers => {:registrations => "registrations"}
@@ -20,7 +32,6 @@ Gonpy::Application.routes.draw do
   #end 
   devise_for :professionals
 
-  get 'posts/autocomplete_service_libelle_service'
       
   resources :proaccounts,:address
   root :to => "home#index"

@@ -20,5 +20,5 @@ class Proaccount
   embeds_one :address
   embeds_many :services 
   embeds_many :pictures
-  
+  has_many :requests
 end
