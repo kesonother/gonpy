@@ -2,8 +2,6 @@ Gonpy::Application.routes.draw do
   
   get "search/index"
 
-  resources :messages
-
   resources :categories
 
   resources :requests
@@ -22,6 +20,8 @@ Gonpy::Application.routes.draw do
   get "home/index"
   get "requests/new"
   get "requests/direct"
+  get "inbox/receive"
+  get "inbox/send"
   #get "requests/autocomplete_category_libelle_category"
   
   #match "/uploads/uploads/*path" => "gridfs#serve"

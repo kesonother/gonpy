@@ -26,10 +26,14 @@ class RequestsController < ApplicationController
   # GET /requests/new
   # GET /requests/new.xml
   def new
-    @proaccount = Proaccount.find(params[:query])
-    #if Proaccount.find(params[:id])      
+    if params[:query].nil?
+      @request = Request.new(params[:request]) 
+      @proaccount = Proaccount.new
+    else
+      @proaccount = Proaccount.find(params[:query])   
       @request = @proaccount.requests.new
-
+    end
+    #if Proaccount.find(params[:id])      
       respond_to do |format|
         format.html # new.html.erb
         format.xml  { render :xml => @request }
@@ -47,6 +51,7 @@ class RequestsController < ApplicationController
   # POST /requests.xml
   def create
     if current_professional.nil?
+      @proaccount = Proaccount.find(params[:request][:proaccount_id]) 
       @request = Request.new(params[:request])
     else
       @request = current_professional.proaccount.requests.new(params[:request]) #Request.new(params[:request])    
