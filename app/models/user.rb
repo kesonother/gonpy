@@ -11,8 +11,8 @@ class User
   validates_uniqueness_of :email 
   #validates_presence_of :email
   # Setup accessible (or protected) attributes for your model  
-  attr_accessible :email, :password, :password_confirmation  
+  attr_accessible :first_name,:last_name,:email, :password, :password_confirmation  
   
-  embeds_one :proaccount
-  
+  has_one :proaccount
+  has_many :requests
 end

@@ -3,7 +3,7 @@ class PicturesController < ApplicationController
   
   def create
 
-    @picture =  current_professional.proaccount.pictures.new(params[:picture])
+    @picture =  current_user.proaccount.pictures.new(params[:picture])
 
     #@picture.image= params[:file]
     #@image = resize_and_crop("http://www.google.com/images/logos/logo.png",200)
@@ -19,7 +19,7 @@ class PicturesController < ApplicationController
   end
   
 def update  
-   @picture =  current_professional.proaccount.pictures.find(params[:id])  
+   @picture =  current_user.proaccount.pictures.find(params[:id])  
 
   if @picture.update_attributes(params[:picture])  
     flash[:notice] = "Successfully updated picture."  
@@ -34,7 +34,7 @@ def update
 end 
 
 def destroy  
-   @picture =  current_professional.proaccount.pictures.find(params[:id])  
+   @picture =  current_user.proaccount.pictures.find(params[:id])  
    @picture.destroy  
     flash[:notice] = "Successfully destroyed product."  
     redirect_to(proaccounts_edit_photo_path())

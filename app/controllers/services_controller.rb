@@ -1,10 +1,11 @@
 class ServicesController < ApplicationController
+   before_filter :authenticate_user!
   respond_to :html, :js
   
   # GET /services
   # GET /services.xml
   def index
-    @services = current_professional.proaccount.services
+    @services = current_user.proaccount.services
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +16,7 @@ class ServicesController < ApplicationController
   # GET /services/1
   # GET /services/1.xml
   def show
-    @service = current_professional.proaccount.services.find(params[:id])
+    @service = current_user.proaccount.services.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -37,9 +38,9 @@ class ServicesController < ApplicationController
 
   # GET /services/1/edit
   def edit
-    @service = current_professional.proaccount.services.find(params[:id])
-    if current_professional.proaccount.services.exists?
-      @services = current_professional.proaccount.services
+    @service = current_user.proaccount.services.find(params[:id])
+    if current_user.proaccount.services.exists?
+      @services = current_user.proaccount.services
     end
   end
 
@@ -47,18 +48,18 @@ class ServicesController < ApplicationController
   # POST /services.xml
   def create
 
-    @service = current_professional.proaccount.services.new(params[:service])
+    @service = current_user.proaccount.services.new(params[:service])
     
     respond_to do |format|
       if @service.save
-        @services = current_professional.proaccount.services
+        @services = current_user.proaccount.services
         format.html { redirect_to(proaccounts_edit_service_path, :notice => 'Service was successfully created.') }
         #format.xml  { render :xml => @service, :status => :created, :location => @service }
         format.js   #{ render :nothing => true }  
       else
-        format.html { render :action => "new" }
+        format.html { render :template => 'proaccounts/edit_service' } 
         #format.xml  { render :xml => @service.errors, :status => :unprocessable_entity }
-        format.js   { render :template => 'proaccounts/edit_service' }  
+        #format.js   { render :template => 'proaccounts/edit_service' }  
       end
     end
   end
@@ -66,7 +67,7 @@ class ServicesController < ApplicationController
   # PUT /services/1
   # PUT /services/1.xml
   def update
-    @service = current_professional.proaccount.services.find(params[:id])
+    @service = current_user.proaccount.services.find(params[:id])
 
     respond_to do |format|
       if @service.update_attributes(params[:service])
@@ -85,7 +86,7 @@ class ServicesController < ApplicationController
   # DELETE /services/1
   # DELETE /services/1.xml
   def destroy
-    @service = current_professional.proaccount.services.find(params[:id])
+    @service = current_user.proaccount.services.find(params[:id])
     @service.destroy
 
     respond_to do |format|

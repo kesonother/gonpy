@@ -1,0 +1,59 @@
+<h2>Form postrequest</h2>
+<%= form_for(@request) do |f| %>
+  <% if @request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@request.errors.count, "error") %> prohibited this request from being saved:</h2>
+
+      <ul>
+      <% @request.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<h2>Décriver votre besoin</h2>
+  <div class="field">
+    <%= f.label :subject %><br />
+    <%= f.text_field :subject %>
+  </div>
+  <div class="field">
+    <%= f.label :category_id %><br />
+    <%= f.collection_select :category_id, Category.all, :id, :libelle_category %>
+  </div>
+  <div class="field">
+    <%= f.label :zipcode %><br />
+    <%= f.text_field :zipcode %>
+  </div>
+  <div class="field">
+    <%= f.label :details %><br />
+    <%= f.text_area :details %>
+  </div>
+<% if !@proaccount.nil? %>
+	<%= f.hidden_field 'proaccount_id', :value => @proaccount.id  %>
+<%end%>
+<h2>Où souhaitez vous que le service soit effectué?</h2>
+   <%= f.check_box :traveltome %> <%= f.label "Le professionnel viens vers moi" %>
+   <br/>
+   <%= f.check_box :itravel %> <%= f.label "Je vais vers le professionnel" %>
+   <br/>
+   <%= f.check_box :neither %> <%= f.label "Uniquement par téléphone ou par mail" %>
+   
+<h2>Comment les professionnels peuvent vous contacter ?</h2>
+<%= f.fields_for(@user) do |user| %>
+<%= user.label :first_name %><br />
+  <%= user.text_field :first_name,:placeholder => 'prenom' %></p>
+  
+  <p><%= user.label :last_name %><br />
+  <%= user.text_field :last_name,:placeholder => 'Nom' %></p>
+    
+  <p><%= user.label :email %><br />
+  <%= user.email_field :email,:placeholder => 'user@domain.com' %></p>
+<%end%>
+
+  <div class="actions">
+    <%= f.submit "Envoyer"%>
+  </div>
+<% end %>
+
+
+        

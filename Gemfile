@@ -6,8 +6,8 @@ gem 'rails', '3.0.9'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-gem "mongoid", "~> 2.0"
-gem "bson_ext", "~> 1.3"
+gem "mongoid"
+gem "bson_ext"
 
 gem 'rails3-jquery-autocomplete'
 gem 'nifty-generators'

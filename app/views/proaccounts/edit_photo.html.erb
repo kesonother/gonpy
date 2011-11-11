@@ -4,7 +4,7 @@
 <h1>Editer photos</h1>
 
 <div id="list-photos">
-<%if current_professional.proaccount.pictures.exists?%>
+<%if current_user.proaccount.pictures.exists?%>
 	<%= image_tag @pictures.image.url(:medium)%>
 	<%= form_for(@pictures, :html => { :multipart => true }) do |f| %>
 		  <%= f.label :image %>

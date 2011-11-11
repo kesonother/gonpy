@@ -1,0 +1,9 @@
+
+<%= render 'inboxnav' %>
+<table>
+<% @messages.each do |mail| %>
+  <tr>
+  	<td><%= link_to mail.subject, request_path(mail) %></td>
+  </tr>
+<% end %>
+</table>

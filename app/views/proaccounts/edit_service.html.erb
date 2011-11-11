@@ -1,4 +1,4 @@
-<%= form_for(@service, :remote => true) do |f| %>
+<%= form_for(@service) do |f| %>
   <% if @service.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@service.errors.count, "error") %> prohibited this service from being saved:</h2>
@@ -18,7 +18,7 @@
   </tr>
   <h1>Ajout d'un service</h1>
 <div id="list-services">
-<%if current_professional.proaccount.services.exists? %>
+<%if current_user.proaccount.services.exists? %>
 <% @services.each do |service| %>
   <tr>
   	<td><%= link_to service.service_name, edit_service_path(service)%></td>

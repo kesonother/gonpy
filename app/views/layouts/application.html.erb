@@ -12,20 +12,22 @@
     <div id="container">
       <div id="user_nav">
 
-        <% if professional_signed_in? %>
-          Bonjour <%= current_professional.first_name %>,
-          <%= link_to "Déconnection", destroy_professional_session_path , :method => :delete%>
+        <% if user_signed_in? %>
+          Bonjour <%= current_user.first_name %>,
+          <%= link_to "Déconnection", destroy_user_session_path , :method => :delete%>
           
-     	<div id="menu">
-      		<%= link_to 'Profil', proaccounts_edit_path(@proaccounts) %>
-      		<%= link_to 'Messages',  inbox_receive_path(@proaccounts) %>
-      		<%= link_to 'Services',  proaccounts_edit_service_path(@proaccounts) %>
-      		<%= link_to 'Photos',  proaccounts_photo_path(@proaccounts) %>
-      		<%= link_to 'Parametres',  proaccounts_settings_path(@proaccounts) %>
-      	</div>
+          	<%if current_user.proaccount.present? %>
+		     	<div id="menu">
+		      		<%= link_to 'Profil', proaccounts_edit_path(@proaccounts) %>
+		      		<%= link_to 'Messages',  inbox_path(@proaccounts) %>
+		      		<%= link_to 'Services',  proaccounts_edit_service_path(@proaccounts) %>
+		      		<%= link_to 'Photos',  proaccounts_photo_path(@proaccounts) %>
+		      		<%= link_to 'Parametres',  proaccounts_settings_path(@proaccounts) %>
+		      	</div>
+       		<% end%>
         <% else %>
-			<%= link_to "Inscription", new_professional_registration_path %>
-			<%= link_to "Connexion", new_professional_session_path %>
+			<%= link_to "Inscription", new_user_registration_path %>
+			<%= link_to "Connexion", new_user_session_path %>
         <% end %>
         <div id="new-request">
       		<%= link_to 'Laissez nous vous trouver un professionnel', new_request_path(@proaccounts) %>

@@ -11,6 +11,9 @@
     </div>
   <% end %>
 
+ <%= f.label :categories %><br />
+ <%= f.select :category, ["Plombier","Photographer","Animation","Télémarketing","Secretariat","Vente",
+ 	"Enqueteur","Manutention","Informatique"] %>
   <div class="field">
     <%= f.label :business_name %><br />
     <%= f.text_field :business_name %>

@@ -2,7 +2,7 @@ class ProaccountsController < ApplicationController
   
    respond_to :html, :js, :json
   def index
-    @proaccount = current_professional.proaccount
+    @proaccount = current_user.proaccount
     @address = @proaccount.address
     
     respond_to do |format|
@@ -35,7 +35,7 @@ class ProaccountsController < ApplicationController
 
   def create
 
-    @proaccount = current_professional.build_proaccount(params[:proaccount])
+    @proaccount = current_user.build_proaccount(params[:proaccount])
     
     respond_to do |format|
       if @proaccount.save
@@ -51,7 +51,7 @@ class ProaccountsController < ApplicationController
   end
 
   def edit
-     @proaccount = current_professional.proaccount
+     @proaccount = current_user.proaccount
      
      if @proaccount.nil?
         @proaccount = Proaccount.new
@@ -65,7 +65,7 @@ class ProaccountsController < ApplicationController
   # PUT /proaccounts/1
   # PUT /proaccounts/1.xml
   def update
-    @proaccount = current_professional.proaccount
+    @proaccount = current_user.proaccount
 
     respond_to do |format|
       if @proaccount.update_attributes(params[:proaccount])
@@ -82,8 +82,8 @@ class ProaccountsController < ApplicationController
       
         @service = Service.new
         
-        if current_professional.proaccount.services.exists?
-          @services = current_professional.proaccount.services
+        if current_user.proaccount.services.exists?
+          @services = current_user.proaccount.services
         end
         
         respond_to do |format|
@@ -96,8 +96,8 @@ class ProaccountsController < ApplicationController
   def photo
     @picture = Picture.new
     
-    if current_professional.proaccount.pictures.exists?
-      @pictures = current_professional.proaccount.pictures.first()    
+    if current_user.proaccount.pictures.exists?
+      @pictures = current_user.proaccount.pictures.first()    
     end
     
     respond_to do |format|
@@ -109,8 +109,8 @@ class ProaccountsController < ApplicationController
   def edit_photo
      @picture = Picture.new
      
-    if current_professional.proaccount.pictures.exists?
-      @pictures = current_professional.proaccount.pictures.first()    
+    if current_user.proaccount.pictures.exists?
+      @pictures = current_user.proaccount.pictures.first()    
     end
     
     respond_to do |format|
@@ -121,8 +121,8 @@ class ProaccountsController < ApplicationController
   
   def crop
 
-    if current_professional.proaccount.pictures.exists?
-      @pictures = current_professional.proaccount.pictures.first()
+    if current_user.proaccount.pictures.exists?
+      @pictures = current_user.proaccount.pictures.first()
       
     end
     

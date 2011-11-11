@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<div>objet: <%= @request.subject %></div>
+<span><%= @request.details %></span>
+</br>
+
 
 <%= link_to 'Edit', edit_request_path(@request) %> |
 <%= link_to 'Back', requests_path %>

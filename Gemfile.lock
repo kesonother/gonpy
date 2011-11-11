@@ -100,11 +100,11 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  bson_ext (~> 1.3)
+  bson_ext
   devise
   geocoder
   mocha
-  mongoid (~> 2.0)
+  mongoid
   mongoid-paperclip
   nifty-generators
   paperclip

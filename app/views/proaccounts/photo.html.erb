@@ -4,7 +4,7 @@
 <h1>photos</h1>
 
 <div id="photo-profil">
-<%if current_professional.proaccount.pictures.exists?%>
+<%if current_user.proaccount.pictures.exists?%>
 	<%= image_tag @pictures.image.url(:medium)%>
 	 <div class="actions">
       <%= link_to "Modifier", proaccounts_edit_photo_path() %> |

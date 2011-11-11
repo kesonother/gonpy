@@ -1,7 +1,19 @@
 development:
-  host: localhost
-  database: gonpy_development
-
+  #host: localhost
+  #database: gonpy_development
+  #mongolab
+  #uri:<%= ENV['mongodb://wsonke:jaunes@dbh62.mongolab.com:27627/starff'] %>
+  host: dbh62.mongolab.com
+  port: 27627
+  username: wsonke
+  password: jaunes
+  database: gonpy
+  # uri:<%= ENV['mongodb://wsonke:jaunes@staff.mongohq.com:10042/gonpy_development'] %>
+  #host: staff.mongohq.com
+  #port: 10042
+   #username: wsonke
+  #password: jaunes
+  #database: gonpy_development
 test:
   host: localhost
   database: gonpy_test

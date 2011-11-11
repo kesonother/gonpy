@@ -1,5 +1,7 @@
 Gonpy::Application.routes.draw do
   
+  resources :bids
+
   get "search/index"
 
   resources :categories
@@ -18,15 +20,19 @@ Gonpy::Application.routes.draw do
   #get "proaccounts/crop"
   get "proaccounts/settings"
   get "home/index"
+  match 'postrequest' => 'postrequest#new'
+  get "postrequest/create"
   get "requests/new"
   get "requests/direct"
   get "inbox/receive"
-  get "inbox/send"
+  get "inbox/sendmail"
+  get "inbox/index"
+  get "request/create_bid"
+  match 'inbox' => 'inbox#index'
   #get "requests/autocomplete_category_libelle_category"
   
-  #match "/uploads/uploads/*path" => "gridfs#serve"
-
-  devise_for :users #, :controllers => {:registrations => "registrations"}
+  #devise_for :users #, :controllers => {:registrations => "registrations"}
+  devise_for :users, :controllers => {:registrations => "registrations"}
   #devise_scope :user do
   #    root :to => "registrations#new"
   #end 
@@ -35,7 +41,7 @@ Gonpy::Application.routes.draw do
       
   resources :proaccounts,:address
   root :to => "home#index"
-
+  match 'home' => 'home#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

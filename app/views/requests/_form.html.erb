@@ -1,3 +1,4 @@
+<h2>Form postrequest</h2>
 <%= form_for(@request) do |f| %>
   <% if @request.errors.any? %>
     <div id="error_explanation">
@@ -10,15 +11,15 @@
       </ul>
     </div>
   <% end %>
-
+<h2>Décriver votre besoin</h2>
   <div class="field">
     <%= f.label :subject %><br />
     <%= f.text_field :subject %>
   </div>
-  <div class="field">
-    <%= f.label :category_id %><br />
-    <%= f.collection_select :category_id, Category.all, :id, :libelle_category %>
-  </div>
+
+ <%= f.label :categories %><br />
+ <%= f.select :category, ["Plombier","Photographer","Animation","Télémarketing","Secretariat","Vente",
+ 	"Enqueteur","Manutention","Informatique"] %>
   <div class="field">
     <%= f.label :zipcode %><br />
     <%= f.text_field :zipcode %>
@@ -30,7 +31,29 @@
 <% if !@proaccount.nil? %>
 	<%= f.hidden_field 'proaccount_id', :value => @proaccount.id  %>
 <%end%>
+<h2>Où souhaitez vous que le service soit effectué?</h2>
+   <%= f.check_box :traveltome %> <%= f.label "Le professionnel viens vers moi" %>
+   <br/>
+   <%= f.check_box :itravel %> <%= f.label "Je vais vers le professionnel" %>
+   <br/>
+   <%= f.check_box :neither %> <%= f.label "Uniquement par téléphone ou par mail" %>
+   
+<h2>Comment les professionnels peuvent vous contacter ?</h2>
+
+<%= f.label :first_name %><br />
+  <%= f.text_field :first_name,:placeholder => 'prenom' %></p>
+  
+  <p><%= f.label :last_name %><br />
+  <%= f.text_field :last_name,:placeholder => 'Nom' %></p>
+    
+  <p><%= f.label :email %><br />
+  <%= f.email_field :email,:placeholder => 'user@domain.com' %></p>
+
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Envoyer"%>
   </div>
 <% end %>
+
+
+        
