@@ -1,7 +1,11 @@
 class Bid
   include Mongoid::Document
-  field :content
+  field :subject
+  field :details
   
-  has_one :user
+  belongs_to :user
   belongs_to :proaccount
+  belongs_to :recipientrequest
+  belongs_to :request
+
 end

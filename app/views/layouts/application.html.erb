@@ -16,15 +16,17 @@
           Bonjour <%= current_user.first_name %>,
           <%= link_to "Déconnection", destroy_user_session_path , :method => :delete%>
           
-          	<%if current_user.proaccount.present? %>
+
 		     	<div id="menu">
+		     	<%= link_to 'Messages',  inbox_path(@proaccounts) %>
+          		<%if current_user.proaccount.present? %>
 		      		<%= link_to 'Profil', proaccounts_edit_path(@proaccounts) %>
-		      		<%= link_to 'Messages',  inbox_path(@proaccounts) %>
 		      		<%= link_to 'Services',  proaccounts_edit_service_path(@proaccounts) %>
 		      		<%= link_to 'Photos',  proaccounts_photo_path(@proaccounts) %>
 		      		<%= link_to 'Parametres',  proaccounts_settings_path(@proaccounts) %>
+       			<% end%>
 		      	</div>
-       		<% end%>
+
         <% else %>
 			<%= link_to "Inscription", new_user_registration_path %>
 			<%= link_to "Connexion", new_user_session_path %>
@@ -54,6 +56,7 @@
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
       <% end %>
       <%= content_tag :h1, yield(:title) if show_title? %>
+      
       <%= yield %>
     </div>
 

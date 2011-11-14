@@ -1,34 +1,53 @@
+
 <%= render 'inboxnav' %>
+
+	<% if current_user.proaccount.nil? %>
+		<% @recipients.each do |message|%>
+		  <div>
+		  	<%= link_to message.subject, :bid_id => message%>
+		  </div>	  
+		<%end%>
+      	 <div data-pjax-container>
+      	 	<% if @mail%>
+		  		<%= @mail.details%>
+		  	<%end%>
+		  </div>
+	<%else %>
 <table>
-<% @recipients.each do |message|%>
-  <tr>
-  	<td><%= link_to message.request.subject%></td>
-  	<td><%= message.request.details%></td>
-  </tr>
+	<% @recipients.each do |message|%>
+	  <tr>
+	  	<td><%= link_to message.request.subject%></td>
+	  	<td><%= message.request.details%></td>
+	  </tr>
 
-<%= form_for(@bid) do |f| %>
-  <% if @bid.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@bid.errors.count, "error") %> prohibited this bid from being saved:</h2>
-
-      <ul>
-      <% @bid.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="field">
-  	<h2>Répondre à  <%= message.request.first_name %></h2>
-  	<%= f.hidden_field :user_id, :value => message.request.user_id%>
-    <%= f.label :content%><br />
-    <%= f.text_area :content %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Envoyer"%>
-  </div>
-<% end %>
-<% end %>
+		<%= form_for(@bid) do |f| %>
+			<% if @bid.errors.any? %>
+			    <div id="error_explanation">
+			      <h2><%= pluralize(@bid.errors.count, "error") %> prohibited this bid from being saved:</h2>
+			
+			      <ul>
+			      <% @bid.errors.full_messages.each do |msg| %>
+			        <li><%= msg %></li>
+			      <% end %>
+			      </ul>
+			    </div>
+			  <% end %>
+			  <div class="field">
+			  	<h2>Répondre à  <%= message.request.first_name %></h2>
+			  	<%= f.hidden_field :user_id, :value => message.request.user_id%>
+			  	<%= f.hidden_field :request_id, :value => message.request.id%>
+			  	<%= f.hidden_field :recipientrequest_id, :value => message.id%>
+			  	<%= f.hidden_field :proaccount_id, :value => message.proaccount_id%>	
+			  	<%= f.hidden_field :subject, :value => message.proaccount.business_name%>			  	
+			    <%= f.label :content%><br />
+			    <%= f.text_area :details %>
+			  </div>
+			  <div class="actions">
+			    <%= f.submit "Envoyer"%>
+			  </div>
+			<% end %>
+		<% end %>
+	<%end%>
 </table>
 
 

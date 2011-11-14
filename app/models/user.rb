@@ -15,4 +15,13 @@ class User
   
   has_one :proaccount
   has_many :requests
+  has_many :bids
+  
+  after_create :send_mail
+  
+  def send_mail
+    UserMailer.welcome_email(self).deliver
+  end
 end
+
+

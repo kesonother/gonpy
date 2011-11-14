@@ -58,7 +58,7 @@ class RequestsController < ApplicationController
     else
       @request = current_user.requests.new(params[:request]) #Request.new(params[:request])    
     end
-
+    #@user = User.find(current_user)
 #@proaccounts = Proaccount.categories.find(params[:request][:category_id])
     respond_to do |format|
       if @request.save

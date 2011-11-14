@@ -17,6 +17,7 @@ class Request
 
   belongs_to :user
   has_many :recipientrequests
+  has_many :bids
   
   after_create :prepare_copies
   #belongs_to :category
@@ -29,7 +30,6 @@ class Request
     
     @proaccounts.each do |pro| 
       @recipient = Recipientrequest.create(:proaccount_id => pro.id,:request_id => id)
-      #@recipient.save
     end 
   end
 end

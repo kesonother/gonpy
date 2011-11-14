@@ -19,7 +19,9 @@ gem 'geocoder'
 #Pour la gestion des images
 gem "paperclip"
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
-
+gem "jquery-rails"
+gem "pjax_rails"
+gem 'sendgrid'
 # Use unicorn as the web server
 # gem 'unicorn'
 

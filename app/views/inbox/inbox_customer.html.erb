@@ -1,0 +1,34 @@
+<%= render 'inboxnav' %>
+<table>
+<% @recipients.each do |message|%>
+  <tr>
+  	<td><%= link_to message.request.subject%></td>
+  	<td><%= message.request.details%></td>
+  </tr>
+
+<%= form_for(@bid) do |f| %>
+  <% if @bid.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bid.errors.count, "error") %> prohibited this bid from being saved:</h2>
+
+      <ul>
+      <% @bid.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+  	<h2>Répondre à  <%= message.request.first_name %></h2>
+  	<%= f.hidden_field :user_id, :value => message.request.user_id%>
+    <%= f.label :content%><br />
+    <%= f.text_area :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Envoyer"%>
+  </div>
+<% end %>
+<% end %>
+</table>
+
+
